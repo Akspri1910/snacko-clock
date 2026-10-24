@@ -15,7 +15,7 @@ if (window.gsap && window.ScrollTrigger) {
     gsap.utils.toArray('.food-grid article').forEach((card,index) => {
       gsap.from(card.querySelector('.food-image'), {clipPath:'inset(100% 0% 0% 0%)',y:35,duration:1,delay:(index%3)*0.12,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 92%',once:true},clearProps:'clipPath,transform'});
     });
-    gsap.utils.toArray('.section-heading, .story-photo, .story-copy, .showcase-caption, .social > *, .visit > *').forEach(element => {
+    gsap.utils.toArray('.section-heading, .chapter-copy, .reveal-card, .story-photo, .story-copy, .showcase-caption, .instagram-live > *, .visit > *').forEach(element => {
       gsap.from(element,{y:45,opacity:0,duration:0.85,scrollTrigger:{trigger:element,start:'top 92%',once:true},clearProps:'all'});
     });
   });
