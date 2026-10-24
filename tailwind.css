@@ -1,0 +1,8 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "./dist/index.html";
+@theme {
+  --color-snack-yellow: #ffd42b;
+  --color-snack-ink: #20211d;
+}
