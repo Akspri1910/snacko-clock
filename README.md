@@ -34,7 +34,7 @@ The checked-in `dist/` is already runnable: no application server, database, env
 | `dist/premium.css` | Current black/yellow brand styling; the final brand system is near the end |
 | `dist/style.css`, `dist/redesign.css` | Earlier layout foundations, still loaded before `premium.css` |
 | `tailwind.css` | Tailwind v4 source and content scanning |
-| `dist/tailwind.css` | Generated Tailwind output |
+| `dist/styles.css` | Generated Tailwind output |
 | `dist/app.js` | Menu category filters and footer year |
 | `dist/motion.js` | GSAP entrance/scroll animation and pause control |
 | `dist/assets/ai-*.webp` | Six temporary AI food photographs |

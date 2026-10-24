@@ -34,7 +34,7 @@ The owner reviewed several iterations. The latest direction restores **black and
 
 ### Visual system
 
-Current colour tokens are in the final brand-system section of `dist/premium.css`:
+Current colour tokens and responsive layouts are in root `styles.css`:
 
 | Role | Colour |
 | --- | --- |
@@ -49,12 +49,12 @@ Current colour tokens are in the final brand-system section of `dist/premium.css
 
 Section progression: black hero → yellow snack strip → butter-yellow relocation section → black food spotlight → ivory menu → lilac story → ivory Instagram section → yellow location CTA → black footer.
 
-Anton is the current uppercase display typeface. DM Sans is used for body/UI text. Small handwritten accents remain. Earlier stylesheets still import some older font families; font and CSS consolidation is useful future cleanup.
+Anton is the current uppercase display typeface. DM Sans is used for body/UI text. Small handwritten accents remain. Fonts load once in the HTML. Root `styles.css` is imported by `tailwind.css` and compiled into the single local stylesheet `dist/styles.css`.
 
 ### Motion and accessibility
 
 - GSAP and ScrollTrigger are installed through npm and copied into `dist/vendor/` at build time.
-- Hero text/food entrance, slow clock-ring movement, food spotlight parallax, and menu image reveals.
+- Hero text/food entrance, slow clock-ring movement, food spotlight parallax, and small menu translations. No entrance or scroll tween sets opacity to zero or clips content away. Scroll tweens use immediateRender:false, so missed triggers leave visible content.
 - The latest pass removed the more playful bounce and perpetual floating-food treatment.
 - GSAP is gated by `prefers-reduced-motion: no-preference`.
 - The pause control reverts GSAP animations and pauses the CSS snack strip; re-enabling starts them again.
@@ -71,7 +71,7 @@ Phone: `+91 84828 39332`.
 
 The owner confirmed relocation is planned. **Do not publish a guessed new address, entrance pin, last-service date, opening date, countdown, seating capacity, sports partnership, or other unconfirmed details.** The site currently asks visitors to call before travelling and follow Instagram for the reveal.
 
-No current hours or fixed food prices are advertised because earlier materials and listings conflicted. Swiggy is used for current ordering prices/availability. The menu shown is a curated selection, not a verified complete current catalogue.
+No current hours or fixed food prices are advertised. The reviewer referenced photos/menu and photos/logo, but those folders were absent from both the local project and GitHub when checked. The owner was asked for their location and confirmed hours. Do not transcribe or invent menu prices until the actual board is available. Swiggy is used for current ordering prices/availability. The menu shown is a curated selection, not a verified complete current catalogue.
 
 No fabricated ratings, customer counts, testimonials, awards, or health/quality claims were added.
 
@@ -128,7 +128,7 @@ Use `python3` instead of `python` where appropriate. Open http://localhost:8765.
 
 - `build.cjs` runs the installed Tailwind CLI and copies GSAP distributions.
 - `tailwind.css` declares theme tokens and scans `dist/index.html`.
-- `dist/tailwind.css` is generated; edit the Tailwind source or markup and rebuild instead of hand-editing it.
+- `dist/styles.css` is generated; edit the Tailwind source or markup and rebuild instead of hand-editing it.
 - `dist/index.html` is the canonical page content. There is no separate HTML template generator.
 - `dist/app.js` handles category filters and the year.
 - `dist/motion.js` owns animation setup, motion preference handling, and pause/play.
@@ -174,7 +174,7 @@ Never put tokens, passwords, private access links, or account credentials into t
 
 ### B. Improve maintainability and verified quality
 
-1. Consolidate CSS, remove superseded rules and unused fonts/assets after checking references and screenshots. Do not change the design accidentally while cleaning it up.
+1. CSS consolidation is complete. Keep future changes in root styles.css and rebuild; assess unused image assets separately.
 2. Add meaningful browser checks for menu filters, motion pause/reduced-motion behavior, anchor navigation and responsive layouts.
 3. Measure mobile performance; tune image dimensions, font loading, animation costs and third-party embed loading based on evidence.
 4. Test accessibility: keyboard order, focus visibility, contrast, small UI text, motion preferences and iframe behavior. Add automated checks only where they provide real coverage.
@@ -183,7 +183,7 @@ Never put tokens, passwords, private access links, or account credentials into t
 ### C. Launch and discoverability
 
 1. Choose and connect an owner-approved custom domain.
-2. Add verified business metadata, favicon/social preview, canonical URL, sitemap/robots guidance and Restaurant structured data using confirmed facts.
+2. Canonical, robots.txt, sitemap.xml, Restaurant JSON-LD and social metadata are now included. The share image uses the real daylight stall photo; favicon uses the existing temporary logo pending the original. Verify social rendering and search indexing after launch.
 3. Decide whether GitHub should become the primary source/deployment pipeline; configure CI/deployment only after choosing the host.
 4. Add owner-approved privacy-aware analytics if there is a clear measurement goal.
 
@@ -198,3 +198,9 @@ Never put tokens, passwords, private access links, or account credentials into t
 ## 11. Suggested first prompt for Claude
 
 > Read README.md, CLAUDE.md and AI_FOOD_ASSETS.md, then inspect the actual HTML/CSS/JS. Run the build and tests before proposing changes. Preserve the black-and-yellow Snacko’Clock identity, the relocation teaser, current-location accuracy, AI image disclosure and Instagram embeds. Summarize the most valuable next step from the future-scope list and implement only the work I request. Do not invent business facts, redesign the logo, migrate frameworks, publish, or change site access without the relevant authorization.
+
+## 12. Review follow-up: 24 October 2026
+
+Completed: consolidated CSS, larger body text, tighter section spacing, a grid-based food spotlight, real daylight and night stall photos, persistent mobile call/directions buttons, visible-by-default animation, and SEO/share metadata. Build and assert checks pass, including a regression test that withholds scroll triggers and rejects hidden-content tween values. Mobile 390×844 fast-scroll review shows food cards and Instagram content.
+
+Pending: original photos/logo and photos/menu files were not present in the accessible project or GitHub. Full menu/prices and original-logo replacement remain blocked on those files; hours await owner confirmation. Six AI food previews remain disclosed. Real-phone and Safari/Firefox testing have not been performed; browser viewport checks are not physical-device testing.
