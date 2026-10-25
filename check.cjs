@@ -1,14 +1,11 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const buttons = ['all','street','cheesy','sweet'].map(filter => ({dataset:{filter},setAttribute(k,v){this[k]=v},addEventListener(_,fn){this.click=fn}}));
-const dishes = ['street','cheesy','cheesy','cheesy','sweet','sweet'].map(category => ({dataset:{category},hidden:false}));
-const nodes = {'#menu-status':{},'#year':{}};
-vm.runInNewContext(fs.readFileSync('dist/app.js','utf8'),{document:{querySelectorAll:s=>s==='[data-filter]'?buttons:dishes,querySelector:s=>nodes[s]},Date});
-for(const [index,count] of [[1,1],[2,3],[3,2],[0,6]]){buttons[index].click();assert.equal(dishes.filter(d=>!d.hidden).length,count);assert.equal(buttons[index]['aria-pressed'],'true')}
+const nodes={'#year':{}};
+vm.runInNewContext(fs.readFileSync('dist/app.js','utf8'),{document:{querySelector:s=>nodes[s]},Date});
 const html=fs.readFileSync('dist/index.html','utf8');
 for(const [,path] of html.matchAll(/(?:src|href)="([^"#]+)"/g)){if(!/^(https?:|tel:)/.test(path))assert.ok(fs.existsSync('dist/'+path),path)}
-console.log('Passed: all four menu filters and local asset links');
+console.log('Passed: local asset links and footer year');
 const motion=fs.readFileSync('dist/motion.js','utf8');
 vm.runInNewContext(motion,{window:{}});
 let mediaQuery, pauseHandler, reverted=0, pausedClass;
@@ -31,8 +28,9 @@ assert.ok(embeds.every(frame=>frame.includes('title=')&&frame.includes('loading=
 assert.ok(html.includes('https://www.instagram.com/the_snacko_clock/embed/'));
 assert.ok(html.includes('CURRENT LOCATION / FOUNTAIN ROAD'));
 assert.ok(html.includes('New location and opening details will be revealed soon.'));
-assert.ok(html.includes('Food images are AI-generated previews.'));
-console.log('Passed: Instagram profile and reel embeds, current-location labels and AI disclosure');
+assert.ok(html.includes('Food images are from our current ordering menu.'));
+assert.ok(!html.includes('assets/ai-')); 
+console.log('Passed: Instagram profile and reel embeds, current-location labels and catalog image disclosure');
 // Withhold every scroll trigger: no initial tween may hide content on fast scroll.
 const tweens=[];
 const chain={from(target,vars){tweens.push(vars);return chain}};
@@ -49,9 +47,19 @@ assert.equal(schema['@type'],'Restaurant');
 assert.equal(schema.openingHours,undefined);
 console.log('Passed: visible content without scroll triggers, single local stylesheet and SEO metadata');
 
-assert.equal([...html.matchAll(/class="menu-line"/g)].length,60);
-assert.equal([...html.matchAll(/class="menu-category"/g)].length,11);
+assert.equal([...html.matchAll(/class="menu-line"/g)].length,71);
+assert.equal([...html.matchAll(/class="menu-category"/g)].length,13);
 assert.ok(html.includes("assets/original-sign-logo.png")&&!html.includes("assets/brand-logo.png"));
 assert.ok(html.includes("<span>Pani Puri</span><strong>₹40</strong>")&&html.includes("<span>Cold Coffee</span><strong>₹90</strong>"));
 assert.ok(!html.includes("openingHours"));
-console.log("Passed: full board menu, original sign photo logo, and no unconfirmed hours");
+console.log("Passed: full current menu, original sign photo logo, and no unconfirmed hours");
+
+const current=JSON.parse(fs.readFileSync('menu-current.json','utf8'));
+assert.equal(current.reduce((n,c)=>n+c.items.length,0),71);
+assert.ok(html.includes('<span>Oreo Shake</span><strong>₹100</strong>'));
+assert.ok(html.includes('aria-label="Menu categories"'));
+assert.ok(html.indexOf('id="full-menu"')<html.indexOf('id="new-chapter"'));
+for(const [,target] of html.matchAll(/href="#([^" ]+)"/g))assert.ok(html.includes('id="'+target+'"'),target);
+console.log('Passed: current prices, 13 category anchors, menu-first flow, no rendered AI assets');
+
+assert.deepEqual([...html.matchAll(/class="menu-line"><span>[^<]+<\/span><strong>₹(\d+)<\/strong>/g)].map(m=>Number(m[1])),current.flatMap(c=>c.items.map(i=>i.price)));

@@ -1,0 +1,422 @@
+[
+  {
+    "category": "Sandwich",
+    "items": [
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/bombaysand.png.jpeg",
+        "name": "Bombay Sandwich",
+        "price": 90
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/cornsand.png.jpeg",
+        "name": "Corn Sandwich",
+        "price": 100
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/vegcheesesand.png.jpeg",
+        "name": "Veg Cheese Sandwich",
+        "price": 110
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/paneersand.png.jpeg",
+        "name": "Paneer Sandwich",
+        "price": 120
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/specialsandsnacko.png.jpeg",
+        "name": "Snack’O Clock Special",
+        "price": 130
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/chocolatesand.png.jpeg",
+        "name": "Chocolate Sandwich",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Nutella Sandwitch",
+        "price": 110
+      },
+      {
+        "image": null,
+        "name": "Extra Cheese.",
+        "price": 30
+      }
+    ]
+  },
+  {
+    "category": "Fries",
+    "items": [
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/saltedfries.png.jpeg",
+        "name": "Salted fries",
+        "price": 90
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/periperifries.png.jpeg",
+        "name": "Peri Peri fries",
+        "price": 110
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/peripericheesefries.png.jpeg",
+        "name": "Peri Peri Cheese Fries",
+        "price": 120
+      },
+      {
+        "image": null,
+        "name": "Liquid Cheese Fries",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "category": "Pizza",
+    "items": [
+      {
+        "image": null,
+        "name": "Margherita Pizza",
+        "price": 160
+      },
+      {
+        "image": null,
+        "name": "Peppy Paneer Pizza",
+        "price": 200
+      },
+      {
+        "image": null,
+        "name": "Golden Corn Pizza",
+        "price": 190
+      },
+      {
+        "image": null,
+        "name": "Veg Chesse Pizza",
+        "price": 200
+      }
+    ]
+  },
+  {
+    "category": "Burger",
+    "items": [
+      {
+        "image": null,
+        "name": "Aloo Tikki Burger",
+        "price": 80
+      },
+      {
+        "image": null,
+        "name": "Aloo Tikki Cheese Burger",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Paneer Tikki Burger",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Paneer Tikki Cheese Burger",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "category": "Pizza Sandwich",
+    "items": [
+      {
+        "image": null,
+        "name": "Corn Chilli Pizza Sandwich",
+        "price": 160
+      },
+      {
+        "image": null,
+        "name": "Paneer Chilli Pizza Sandwich",
+        "price": 170
+      },
+      {
+        "image": null,
+        "name": "Paneer Corn Pizza Sandwich",
+        "price": 180
+      },
+      {
+        "image": null,
+        "name": "Garlic Bread",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Extra Cheese",
+        "price": 30
+      }
+    ]
+  },
+  {
+    "category": "Waffles",
+    "items": [
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/chocolatewaffles.png.jpeg",
+        "name": "Chocolate Waffles",
+        "price": 100
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/dardchocolatewaffle.png.jpeg",
+        "name": "Dark Chocolate Waffles",
+        "price": 110
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/whitechocolatewaffle.png.jpeg",
+        "name": "White Chocolate",
+        "price": 110
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/nutellawaffles.png.jpeg",
+        "name": "Nutella Waffles",
+        "price": 120
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/kitkatwaffle.png.jpeg",
+        "name": "KitKat Waffles",
+        "price": 110
+      }
+    ]
+  },
+  {
+    "category": "Cold Coffee",
+    "items": [
+      {
+        "image": null,
+        "name": "Small Bottle",
+        "price": 10
+      },
+      {
+        "image": null,
+        "name": "Parcel charges",
+        "price": 10
+      },
+      {
+        "image": null,
+        "name": "Lemon Tea",
+        "price": 20
+      },
+      {
+        "image": null,
+        "name": "Big Bottle",
+        "price": 20
+      },
+      {
+        "image": null,
+        "name": "Hot Coffee",
+        "price": 20
+      },
+      {
+        "image": null,
+        "name": "Hot Tea",
+        "price": 15
+      },
+      {
+        "image": null,
+        "name": "Black Tea",
+        "price": 20
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/coldcoffee.png.jpeg",
+        "name": "Cold Coffee",
+        "price": 90
+      },
+      {
+        "image": null,
+        "name": "Cold Coffee with crush",
+        "price": 110
+      }
+    ]
+  },
+  {
+    "category": "Shakes",
+    "items": [
+      {
+        "image": null,
+        "name": "Kitkate Shake",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Oreo Shake",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Strawberry Shake",
+        "price": 110
+      },
+      {
+        "image": null,
+        "name": "Blueberry Shake",
+        "price": 110
+      },
+      {
+        "image": null,
+        "name": "Vanilla Shake",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "category": "Mojito",
+    "items": [
+      {
+        "image": null,
+        "name": "Vrigin Mojito",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "BlueLagun Mojito",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Green Apple Mojito",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Orange Mojito",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Watermelon Mojito",
+        "price": 100
+      }
+    ]
+  },
+  {
+    "category": "Maggie",
+    "items": [
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/plainmaggie.png.jpeg",
+        "name": "Plain Maggie",
+        "price": 70
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/masalamagiie.png.jpeg",
+        "name": "Masala Maggie",
+        "price": 90
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/vegcheesemaggie.png.jpeg",
+        "name": "Veg Chesse Maggie",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "category": "Chaat",
+    "items": [
+      {
+        "image": null,
+        "name": "Pani Puri",
+        "price": 40
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/olibhel.png.jpeg",
+        "name": "Oli Bhel",
+        "price": 60
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/bombaybhel.png.jpeg",
+        "name": "Bombay Bhel",
+        "price": 70
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/dahibhel.png.jpeg",
+        "name": "Dehi Bhel",
+        "price": 80
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/shevpuri.png.jpeg",
+        "name": "Shev Puri",
+        "price": 70
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/dahipuri.png.jpeg",
+        "name": "Dahi Puri",
+        "price": 80
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/masalapuri.png.jpeg",
+        "name": "Masala Puri",
+        "price": 60
+      },
+      {
+        "image": null,
+        "name": "Bombay Shev Puri",
+        "price": 60
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/alootikichaat.png.jpeg",
+        "name": "Aloo Tikki Chaat",
+        "price": 80
+      },
+      {
+        "image": null,
+        "name": "Papadi Chaat",
+        "price": 80
+      },
+      {
+        "image": "https://btoc-ecom-prod.s3.ap-south-1.amazonaws.com/02e455d5-e2cc-4478-a6f9-f101ce14d1fb/products/paanipurifamilypack.png.jpeg",
+        "name": "Pani Puri Family Pack",
+        "price": 280
+      }
+    ]
+  },
+  {
+    "category": "Potato Spring Roll",
+    "items": [
+      {
+        "image": null,
+        "name": "Masala Spring Potato",
+        "price": 90
+      },
+      {
+        "image": null,
+        "name": "Peri Peri Spring Potato",
+        "price": 100
+      },
+      {
+        "image": null,
+        "name": "Peri Peri Cheese Spring\nPotato",
+        "price": 110
+      },
+      {
+        "image": null,
+        "name": "Cheese Spring Potato",
+        "price": 110
+      }
+    ]
+  },
+  {
+    "category": "Combos",
+    "items": [
+      {
+        "image": null,
+        "name": "Margherita Pizza + Salted\nFries + Cold Coffee",
+        "price": 320
+      },
+      {
+        "image": null,
+        "name": "Peppy Paneer Pizza +\nSaffron/Vanilla Shake",
+        "price": 300
+      },
+      {
+        "image": null,
+        "name": "Aloo Tikki Cheese Burger +\nWatermelon Mojito",
+        "price": 180
+      },
+      {
+        "image": null,
+        "name": "Paneer Tikki Cheese Burger\n+ KitKat/ Orio Shake",
+        "price": 210
+      }
+    ]
+  }
+]

@@ -9,8 +9,6 @@ if (window.gsap && window.ScrollTrigger) {
       .from('.hero-side', {x:12,y:16,duration:0.9,clearProps:'transform'},0.3)
       .from('.hero .intro, .hero .actions, .food-scribble, .sticker', {y:12,stagger:0.08,duration:0.6,clearProps:'transform'},0.3);
     gsap.to('.food-orbit', {rotation:360,duration:100,repeat:-1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top bottom',end:'bottom top',toggleActions:'play pause resume pause'}});
-    gsap.fromTo('.showcase-plate', {rotation:-8,scale:0.88,y:70}, {rotation:4,scale:1,y:-25,ease:'none',scrollTrigger:{trigger:'.craving-showcase',start:'top bottom',end:'bottom top',scrub:1.4}});
-    gsap.from('.craving-showcase h2', {x:-16,duration:0.8,immediateRender:false,scrollTrigger:{trigger:'.craving-showcase',start:'top 95%',once:true},clearProps:'transform'});
     gsap.utils.toArray('.food-grid article').forEach((card,index) => {
       gsap.from(card.querySelector('.food-image'), {y:16,scale:0.98,duration:0.65,delay:(index%3)*0.06,immediateRender:false,ease:'power2.out',scrollTrigger:{trigger:card,start:'top 98%',once:true},clearProps:'transform'});
     });
@@ -28,6 +26,5 @@ if (window.gsap && window.ScrollTrigger) {
     media.revert();
     if (!paused) animate();
   });
-  document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => ScrollTrigger.refresh()));
   document.body.classList.add('motion-ready');
 }
