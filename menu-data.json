@@ -1,0 +1,527 @@
+{
+ "veg": [
+  {
+   "name": "Sandwich",
+   "items": [
+    [
+     "Bombay Sandwich",
+     90
+    ],
+    [
+     "Corn Sandwich",
+     100
+    ],
+    [
+     "Veg Cheese Sandwich",
+     110
+    ],
+    [
+     "Paneer Sandwich",
+     120
+    ],
+    [
+     "Snack’O Clock Special",
+     130
+    ],
+    [
+     "Chocolate Sandwich",
+     100
+    ],
+    [
+     "Nutella Sandwich",
+     110
+    ],
+    [
+     "Extra Cheese",
+     30
+    ]
+   ]
+  },
+  {
+   "name": "Fries",
+   "items": [
+    [
+     "Salted fries",
+     90
+    ],
+    [
+     "Peri Peri fries",
+     110
+    ],
+    [
+     "Peri Peri Cheese Fries",
+     120
+    ],
+    [
+     "Liquid Cheese Fries",
+     120
+    ]
+   ]
+  },
+  {
+   "name": "Pizza",
+   "items": [
+    [
+     "Margherita Pizza",
+     160
+    ],
+    [
+     "Peppy Paneer Pizza",
+     200
+    ],
+    [
+     "Golden Corn Pizza",
+     190
+    ],
+    [
+     "Veg Cheese Pizza",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "Burger",
+   "items": [
+    [
+     "Aloo Tikki Burger",
+     80
+    ],
+    [
+     "Aloo Tikki Cheese Burger",
+     100
+    ],
+    [
+     "Paneer Tikki Burger",
+     100
+    ],
+    [
+     "Paneer Tikki Cheese Burger",
+     120
+    ]
+   ]
+  },
+  {
+   "name": "Pizza Sandwich",
+   "items": [
+    [
+     "Corn Chilli Pizza Sandwich",
+     160
+    ],
+    [
+     "Paneer Chilli Pizza Sandwich",
+     170
+    ],
+    [
+     "Paneer Corn Pizza Sandwich",
+     180
+    ],
+    [
+     "Garlic Bread",
+     100
+    ],
+    [
+     "Extra Cheese",
+     30
+    ]
+   ]
+  },
+  {
+   "name": "Waffles",
+   "items": [
+    [
+     "Chocolate Waffles",
+     100
+    ],
+    [
+     "Dark Chocolate Waffles",
+     110
+    ],
+    [
+     "White Chocolate",
+     110
+    ],
+    [
+     "Nutella Waffles",
+     120
+    ],
+    [
+     "KitKat Waffles",
+     110
+    ]
+   ]
+  },
+  {
+   "name": "Cold Coffee",
+   "items": [
+    [
+     "Small Bottle",
+     10
+    ],
+    [
+     "Parcel charges",
+     10
+    ],
+    [
+     "Lemon Tea",
+     20
+    ],
+    [
+     "Big Bottle",
+     20
+    ],
+    [
+     "Hot Coffee",
+     20
+    ],
+    [
+     "Hot Tea",
+     15
+    ],
+    [
+     "Black Tea",
+     20
+    ],
+    [
+     "Cold Coffee",
+     90
+    ],
+    [
+     "Cold Coffee with crush",
+     110
+    ]
+   ]
+  },
+  {
+   "name": "Shakes",
+   "items": [
+    [
+     "KitKat Shake",
+     100
+    ],
+    [
+     "Oreo Shake",
+     100
+    ],
+    [
+     "Strawberry Shake",
+     110
+    ],
+    [
+     "Blueberry Shake",
+     110
+    ],
+    [
+     "Vanilla Shake",
+     120
+    ]
+   ]
+  },
+  {
+   "name": "Mojito",
+   "items": [
+    [
+     "Virgin Mojito",
+     100
+    ],
+    [
+     "Blue Lagoon Mojito",
+     100
+    ],
+    [
+     "Green Apple Mojito",
+     100
+    ],
+    [
+     "Orange Mojito",
+     100
+    ],
+    [
+     "Watermelon Mojito",
+     100
+    ]
+   ]
+  },
+  {
+   "name": "Maggi",
+   "items": [
+    [
+     "Plain Maggi",
+     70
+    ],
+    [
+     "Masala Maggi",
+     90
+    ],
+    [
+     "Veg Cheese Maggi",
+     120
+    ]
+   ]
+  },
+  {
+   "name": "Chaat",
+   "items": [
+    [
+     "Pani Puri",
+     40
+    ],
+    [
+     "Oli Bhel",
+     60
+    ],
+    [
+     "Bombay Bhel",
+     70
+    ],
+    [
+     "Dehi Bhel",
+     80
+    ],
+    [
+     "Shev Puri",
+     70
+    ],
+    [
+     "Dahi Puri",
+     80
+    ],
+    [
+     "Masala Puri",
+     60
+    ],
+    [
+     "Bombay Shev Puri",
+     60
+    ],
+    [
+     "Aloo Tikki Chaat",
+     80
+    ],
+    [
+     "Papadi Chaat",
+     80
+    ],
+    [
+     "Pani Puri Family Pack",
+     280
+    ]
+   ]
+  },
+  {
+   "name": "Potato Spring Roll",
+   "items": [
+    [
+     "Masala Spring Potato",
+     90
+    ],
+    [
+     "Peri Peri Spring Potato",
+     100
+    ],
+    [
+     "Peri Peri Cheese Spring Potato",
+     110
+    ],
+    [
+     "Cheese Spring Potato",
+     110
+    ]
+   ]
+  },
+  {
+   "name": "Combos",
+   "items": [
+    [
+     "Margherita Pizza + Salted Fries + Cold Coffee",
+     320
+    ],
+    [
+     "Peppy Paneer Pizza + Saffron/Vanilla Shake",
+     300
+    ],
+    [
+     "Aloo Tikki Cheese Burger + Watermelon Mojito",
+     180
+    ],
+    [
+     "Paneer Tikki Cheese Burger + KitKat/ Oreo Shake",
+     210
+    ]
+   ]
+  }
+ ],
+ "nonveg": [
+  {
+   "name": "Sandwich",
+   "items": [
+    [
+     "Egg Sandwich",
+     90
+    ],
+    [
+     "Egg Cheese Sandwich",
+     110
+    ],
+    [
+     "Chicken Toasty",
+     130
+    ],
+    [
+     "Chicken Cheese Sandwich",
+     140
+    ],
+    [
+     "Chicken Tikka Sandwich",
+     150
+    ],
+    [
+     "Snacko Non-Veg Special",
+     170
+    ],
+    [
+     "Extra Cheese",
+     30
+    ]
+   ]
+  },
+  {
+   "name": "Burger",
+   "items": [
+    [
+     "Egg Burger",
+     90
+    ],
+    [
+     "Chicken Tikki Burger",
+     120
+    ],
+    [
+     "Chicken Cheese Burger",
+     140
+    ],
+    [
+     "Crispy Chicken Burger",
+     150
+    ]
+   ]
+  },
+  {
+   "name": "Pizza",
+   "items": [
+    [
+     "Chicken Tikka Pizza",
+     220
+    ],
+    [
+     "BBQ Chicken Pizza",
+     230
+    ],
+    [
+     "Chicken Peri Peri Pizza",
+     230
+    ]
+   ]
+  },
+  {
+   "name": "Pizza Sandwich",
+   "items": [
+    [
+     "Chicken Chilli Pizza Sandwich",
+     180
+    ],
+    [
+     "Chicken Tikka Pizza Sandwich",
+     190
+    ],
+    [
+     "Chicken Corn Pizza Sandwich",
+     190
+    ]
+   ]
+  },
+  {
+   "name": "Fries &amp; Bites",
+   "items": [
+    [
+     "Chicken Peri Peri Cheese Fries",
+     150
+    ],
+    [
+     "Chicken Loaded Fries",
+     160
+    ],
+    [
+     "Chicken Popcorn",
+     130
+    ],
+    [
+     "Chicken Nuggets",
+     140
+    ],
+    [
+     "Crispy Chicken Strips",
+     160
+    ]
+   ]
+  },
+  {
+   "name": "Rolls &amp; Wraps",
+   "items": [
+    [
+     "Egg Roll",
+     80
+    ],
+    [
+     "Chicken Roll",
+     110
+    ],
+    [
+     "Chicken Cheese Roll",
+     130
+    ],
+    [
+     "Chicken Tikka Wrap",
+     140
+    ]
+   ]
+  },
+  {
+   "name": "Maggi",
+   "items": [
+    [
+     "Egg Maggi",
+     100
+    ],
+    [
+     "Chicken Maggi",
+     130
+    ],
+    [
+     "Chicken Cheese Maggi",
+     150
+    ]
+   ]
+  },
+  {
+   "name": "Combos",
+   "items": [
+    [
+     "Chicken Cheese Burger + Mojito",
+     210
+    ],
+    [
+     "Chicken Cheese Burger + Oreo Shake",
+     240
+    ],
+    [
+     "Chicken Loaded Fries + Mojito",
+     230
+    ],
+    [
+     "Chicken Tikka Pizza + Salted Fries + Cold Coffee",
+     370
+    ]
+   ]
+  }
+ ]
+}

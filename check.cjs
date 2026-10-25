@@ -1,76 +1,72 @@
+// Small assert-based checks. Run: npm test
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const categories=[...fs.readFileSync('dist/index.html','utf8').matchAll(/class="menu-category" id="([^"]+)" aria-label="([^"]+)"/g)].map(([,id,label])=>({id,hidden:false,getAttribute:()=>label}));
-const links=[...categories.map(c=>'#'+c.id),'#all-menu'].map(hash=>({hash,setAttribute(k,v){this[k]=v},addEventListener(_,fn){this.click=fn}}));
-const nodes={'#year':{},'#menu-status':{},'.menu-browser':{classList:{toggle(){}}}};
-const events={};const windowMock={location:{hash:''},addEventListener(name,fn){events[name]=fn}};
-const context={window:windowMock,document:{querySelector:s=>nodes[s],querySelectorAll:s=>s==='.menu-category'?categories:links},Date};
-vm.createContext(context);vm.runInContext(fs.readFileSync('dist/app.js','utf8'),context);
-assert.deepEqual(categories.filter(c=>!c.hidden).map(c=>c.id),['cat-chaat']);
-context.selectMenu('cat-shakes');assert.deepEqual(categories.filter(c=>!c.hidden).map(c=>c.id),['cat-shakes']);
-assert.equal(links.find(l=>l.hash==='#cat-shakes')['aria-current'],'true');
-context.selectMenu('all-menu');assert.equal(categories.filter(c=>!c.hidden).length,13);
-windowMock.location.hash='#cat-combos';events.hashchange();assert.deepEqual(categories.filter(c=>!c.hidden).map(c=>c.id),['cat-combos']);
-windowMock.location.hash='#full-menu';events.hashchange();assert.deepEqual(categories.filter(c=>!c.hidden).map(c=>c.id),['cat-chaat']);
-console.log('Passed: category selection, view-all, hash navigation and default menu');
-const html=fs.readFileSync('dist/index.html','utf8');
-for(const [,path] of html.matchAll(/(?:src|href)="([^"#]+)"/g)){if(!/^(https?:|tel:)/.test(path))assert.ok(fs.existsSync('dist/'+path),path)}
-console.log('Passed: local asset links and footer year');
-const motion=fs.readFileSync('dist/motion.js','utf8');
-vm.runInNewContext(motion,{window:{}});
-let mediaQuery, pauseHandler, reverted=0, pausedClass;
-const toggle={getAttribute(key){return this[key]},setAttribute(key,value){this[key]=value},addEventListener(_,handler){pauseHandler=handler}};
-const gsap={registerPlugin(){},matchMedia:()=>({add(query){mediaQuery=query},revert(){reverted++}})};
-vm.runInNewContext(motion,{window:{gsap,ScrollTrigger:{}},gsap,ScrollTrigger:{},document:{querySelectorAll:()=>[],querySelector:()=>toggle,body:{classList:{add(){},toggle(_,value){pausedClass=value}}}}});
-assert.equal(mediaQuery,'(prefers-reduced-motion: no-preference)');
-pauseHandler({currentTarget:toggle});
-assert.equal(toggle['aria-label'],'Play animations');
-assert.equal(pausedClass,true);
-assert.equal(reverted,1);
-pauseHandler({currentTarget:toggle});
-assert.equal(toggle['aria-label'],'Pause animations');
-assert.equal(pausedClass,false);
-assert.ok(fs.readFileSync('dist/styles.css','utf8').includes('.craving-grid'));
-console.log('Passed: animation fallback, reduced-motion gate and compiled Tailwind');
-const embeds=[...html.matchAll(/<iframe\b[^>]*>/g)].map(match=>match[0]);
-assert.equal(embeds.length,3);
-assert.ok(embeds.every(frame=>frame.includes('title=')&&frame.includes('loading="lazy"')&&frame.includes('https://www.instagram.com/')));
+const html = fs.readFileSync('dist/index.html', 'utf8');
+const css = fs.readFileSync('dist/site.css', 'utf8');
+const js = fs.readFileSync('dist/site.js', 'utf8');
+const data = JSON.parse(fs.readFileSync('menu-data.json', 'utf8'));
+const count = (re, s = html) => (s.match(re) || []).length;
+
+// 1. Local files referenced by the page exist; exactly one local stylesheet and script.
+for (const [, path] of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
+  if (!/^(https?:|tel:|mailto:)/.test(path)) assert.ok(fs.existsSync('dist/' + path.split('?')[0]), 'missing file: ' + path);
+}
+assert.equal(count(/<link rel="stylesheet" href="(?!https:)[^"]+">/g), 1);
+assert.equal(count(/<script src="[^"]+"><\/script>/g), 1);
+for (const [, path] of css.matchAll(/assets\/([\w.\-]+)/g)) assert.ok(fs.existsSync('dist/assets/' + path), path);
+console.log('Passed: local files, one stylesheet, one script');
+
+// 2. Menu: HTML matches menu-data.json; every in-page link has a target; ids are unique.
+const vegItems = data.veg.reduce((n, c) => n + c.items.length, 0), nvItems = data.nonveg.reduce((n, c) => n + c.items.length, 0);
+assert.equal(data.veg.length, 13); assert.equal(vegItems, 71);
+assert.equal(data.nonveg.length, 8); assert.equal(nvItems, 33);
+assert.equal(count(/<li class="row">/g), vegItems + nvItems);
+assert.equal(count(/<section class="cat[ "]/g), data.veg.length + data.nonveg.length);
+for (const c of [...data.veg, ...data.nonveg]) for (const [name, price] of c.items) {
+  assert.ok(Number.isInteger(price) && price > 0, name);
+  assert.ok(html.includes(`<span class="n">${name}</span><span class="d" aria-hidden="true"></span><b class="p">₹${price}</b>`), 'menu line missing: ' + name);
+}
+const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
+assert.equal(new Set(ids).size, ids.length, 'duplicate ids');
+for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(id), 'broken in-page link: #' + id);
+assert.ok(html.includes('Egg dishes are non-veg'));
+console.log('Passed: 71 veg and 33 non-veg dishes match menu-data.json, links resolve, ids unique');
+
+// 3. Business facts and boundaries.
+assert.ok(html.includes('Fountain Road, near Ganga Platino') && html.includes('411014') && html.includes('tel:+918482839332'));
+assert.ok(html.includes('https://thesnackoclock.inmyarea.in/'));
+assert.equal(count(/<iframe\b[^>]*title="[^"]+"[^>]*loading="lazy"/g), 3);
 assert.ok(html.includes('https://www.instagram.com/the_snacko_clock/embed/'));
-assert.ok(html.includes('CURRENT LOCATION / FOUNTAIN ROAD'));
 assert.ok(html.includes('New location and opening details will be revealed soon.'));
-assert.ok(html.includes('Food images are from our current ordering menu.'));
-assert.ok(!html.includes('assets/ai-')); 
-console.log('Passed: Instagram profile and reel embeds, current-location labels and catalog image disclosure');
-// Withhold every scroll trigger: no initial tween may hide content on fast scroll.
-const tweens=[];
-const chain={from(target,vars){tweens.push(vars);return chain}};
-const element={querySelector(){return {}}};
-const activeGsap={registerPlugin(){},matchMedia:()=>({add(_,callback){callback()},revert(){}}),timeline:()=>chain,from(target,vars){tweens.push(vars)},to(){},fromTo(){},utils:{toArray:()=>[element]}};
-vm.runInNewContext(motion,{window:{gsap:activeGsap,ScrollTrigger:{}},gsap:activeGsap,ScrollTrigger:{},document:{querySelector:()=>toggle,querySelectorAll:()=>[],body:{classList:{add(){}}}}});
-assert.ok(tweens.length>0);
-for(const tween of tweens){assert.equal(tween.opacity,undefined);assert.equal(tween.autoAlpha,undefined);assert.equal(tween.clipPath,undefined);if(tween.scrollTrigger)assert.equal(tween.immediateRender,false)}
-assert.equal([...html.matchAll(/<link rel="stylesheet" href="(?!https:)[^"]+">/g)].length,1);
-assert.ok(html.includes('assets/shop.webp')&&html.includes('assets/night.webp'));
-assert.ok(html.includes('rel="canonical"')&&html.includes('property="og:image"'));
-const schema=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
-assert.equal(schema['@type'],'Restaurant');
-assert.equal(schema.openingHours,undefined);
-console.log('Passed: visible content without scroll triggers, single local stylesheet and SEO metadata');
+const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+assert.equal(schema['@type'], 'Restaurant'); assert.equal(schema.openingHours, undefined);
+assert.ok(html.includes('rel="canonical"') && html.includes('property="og:image"') && !html.includes('noindex'));
+assert.ok(!/assets\/ai-/.test(html), 'AI food images are not used');
+assert.ok(html.includes('CC BY-SA 4.0') && html.includes('Minaxibose1992') && html.includes('Ankushkr2020') && html.includes('Rutvi Mistry'), 'photo credits');
+for (const word of ['separate kitchen', 'pure veg', '100% veg']) assert.ok(!html.toLowerCase().includes(word), 'unconfirmed claim: ' + word);
+console.log('Passed: address, phone, embeds, no invented hours or claims, credits, SEO');
 
-assert.equal([...html.matchAll(/class="menu-line"/g)].length,71);
-assert.equal([...html.matchAll(/class="menu-category"/g)].length,13);
-assert.ok(html.includes("assets/original-sign-logo.png")&&!html.includes("assets/brand-logo.png"));
-assert.ok(html.includes("<span>Pani Puri</span><strong>₹40</strong>")&&html.includes("<span>Cold Coffee</span><strong>₹90</strong>"));
-assert.ok(!html.includes("openingHours"));
-console.log("Passed: full current menu, original sign photo logo, and no unconfirmed hours");
+// 4. Motion is safe: content shows without JS and with reduced motion.
+assert.ok(css.includes('prefers-reduced-motion'));
+assert.ok(!/\.maha2 \.(disc|fort|pheta|stamp)\{[^}]*opacity:0/.test(css), 'chapter art must only hide when JS has armed it');
+assert.ok(/\.maha2\.armed \.fort\{/.test(css));
+console.log('Passed: reduced-motion rule and no-JS visibility');
 
-const current=JSON.parse(fs.readFileSync('menu-current.json','utf8'));
-assert.equal(current.reduce((n,c)=>n+c.items.length,0),71);
-assert.ok(html.includes('<span>Oreo Shake</span><strong>₹100</strong>'));
-assert.ok(html.includes('aria-label="Menu categories"'));
-assert.ok(html.indexOf('id="full-menu"')<html.indexOf('id="new-chapter"'));
-for(const [,target] of html.matchAll(/href="#([^" ]+)"/g))assert.ok(html.includes('id="'+target+'"'),target);
-console.log('Passed: current prices, 13 category anchors, menu-first flow, no rendered AI assets');
-
-assert.deepEqual([...html.matchAll(/class="menu-line"><span>[^<]+<\/span><strong>₹(\d+)<\/strong>/g)].map(m=>Number(m[1])),current.flatMap(c=>c.items.map(i=>i.price)));
+// 5. Behaviour: the headline follows the visitor's hour (run site.js with a stub DOM).
+function run(hour) {
+  const els = {};
+  const stub = () => new Proxy(function () {}, {
+    get: (t, k) => (k === 'length' ? 0 : k === Symbol.toPrimitive ? () => '' : t[k] !== undefined ? t[k] : (t[k] = typeof k === 'string' && /^(textContent|innerHTML|id|className|hidden|tabIndex)$/.test(k) ? '' : stub())),
+    set: (t, k, v) => ((t[k] = v), true), apply: () => stub()
+  });
+  const doc = { getElementById: id => els[id] || (els[id] = stub()), querySelector: () => stub(), querySelectorAll: () => ({ forEach() {} }) };
+  class FakeDate extends Date { constructor() { super(2026, 9, 25, hour, 5, 7); } }
+  const win = { matchMedia: () => ({ matches: true }), addEventListener() {}, scrollY: 0, innerWidth: 1280 };
+  vm.runInNewContext(js, { window: win, document: doc, Date: FakeDate, history: { replaceState() {} }, location: { hash: '' }, setTimeout() {}, requestAnimationFrame() {}, innerWidth: 1280 });
+  return [els.w1.textContent, els.mr.textContent];
+}
+const expect = { 6: 'Chai', 12: 'Chaat', 16: 'Snack', 20: 'Maggi', 2: 'Craving' };
+for (const [h, word] of Object.entries(expect)) assert.equal(run(+h)[0], word, 'hour ' + h);
+assert.equal(run(16)[1], 'खाऊची वेळ!');
+console.log('Passed: time-aware headline for morning, midday, evening, night and late night');
