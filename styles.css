@@ -196,3 +196,119 @@ footer { padding:55px 4% 22px; color:var(--cream); background:var(--black); }
   .mobile-contact a:last-child { background:var(--yellow); color:var(--black); }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; } .motion-ready .ticker-track { animation:none; } .craving-card:hover,.button:hover { transform:none; } }
+
+/* Veg / non-veg, Maharashtra */
+:root { --deva:'Yatra One','Mukta',sans-serif; --veg:#1b8a3d; --nonveg:#c62828; }
+.deva { font-family:var(--deva); letter-spacing:0; line-height:1.3; }
+.hero .deva { margin-top:18px; font-size:28px; }
+.vmark { display:inline-block; width:16px; height:16px; border:2px solid; position:relative; vertical-align:-3px; margin-right:6px; background:#fff; flex:none; }
+.vmark::after { content:""; position:absolute; inset:3px; border-radius:50%; background:currentColor; }
+.vmark.veg { color:var(--veg); } .vmark.nonveg { color:var(--nonveg); }
+.sides { background:var(--paper); border-top:1px solid var(--black); padding-bottom:70px; }
+.sides .section-heading.compact h2 { font-size:clamp(36px,5vw,58px); }
+.sides-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.side-card { position:relative; display:flex; min-height:440px; overflow:hidden; border:1px solid var(--black); color:var(--cream); isolation:isolate; transition:transform .3s; }
+.side-card:hover { transform:translateY(-6px); }
+.side-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
+.side-card::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(20,20,17,.05) 25%,rgba(20,20,17,.88)); }
+.side-body { align-self:flex-end; padding:28px; }
+.side-body .deva { font-size:26px; color:var(--yellow); margin-top:6px; }
+.side-body h3 { font-size:clamp(44px,5vw,68px); margin:2px 0 8px; }
+.side-body p:not(.deva) { max-width:340px; font-size:15px; }
+.side-body b { display:inline-block; margin-top:14px; padding:10px 18px; background:var(--yellow); color:var(--black); border-radius:30px; font-size:13px; }
+.side-body .vmark { width:22px; height:22px; margin:0; }
+.side-body .vmark::after { inset:4px; }
+.nv-sec { background:var(--black); color:var(--cream); display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:7%; border-top:1px solid var(--black); }
+.nv-sec .eyebrow { color:var(--yellow); }
+.nv-sec h2 { margin:22px 0; font-size:clamp(44px,5.2vw,72px); }
+.nonveg-copy p:not(.eyebrow) { max-width:430px; color:#d7d4c9; }
+.nonveg-copy .button { margin-top:26px; }
+.nonveg-photo img { width:100%; height:380px; object-fit:cover; border:1px solid var(--yellow); border-radius:140px 0 0 0; }
+.nonveg-photo figcaption { margin-top:10px; font-size:11px; color:#aaa79b; }
+.deva.big { font-size:clamp(46px,8vw,104px); line-height:1.1; }
+.maha-photos { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.maha-photos img { width:100%; height:260px; object-fit:cover; border:1px solid var(--black); }
+.maha-photos figcaption { padding-top:8px; font-size:12px; font-weight:600; }
+.credits { padding:14px 0 18px; border-top:1px solid #ffffff40; font-size:11px; color:#aaa79b; }
+.credits a { text-decoration:underline; }
+@media (max-width:1000px){ .nv-sec,.maha-layout { gap:30px; } header nav { gap:14px; } header nav a { font-size:13px; } }
+@media (max-width:700px){
+  .hero .deva { font-size:24px; }
+  .sides-grid,.nv-sec,.maha-layout,.maha-photos { grid-template-columns:1fr; }
+  .side-card { min-height:380px; }
+  .nonveg-photo img { height:260px; border-radius:90px 0 0 0; }
+  .maha { padding-top:90px; }
+  .maha-photos img { height:210px; }
+  header nav a:nth-child(n+3) { display:none; }
+}
+@media (prefers-reduced-motion:reduce){ .side-card:hover { transform:none; } }
+.nv-sec { display:block; }
+.nv-top { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:7%; }
+.nv-menu { display:grid; grid-template-columns:1fr 1fr; gap:10px 6%; margin-top:64px; }
+.nv-category { border-top:2px solid var(--yellow); padding:26px 0; min-width:0; }
+.nv-category h3 { font:400 38px/1.1 var(--serif); letter-spacing:-1.2px; color:var(--yellow); margin-bottom:14px; }
+.nv-category ul { margin:0; padding:0; list-style:none; }
+.nv-category .menu-line { border-bottom:1px solid #ffffff30; }
+.nv-note { margin-top:18px; font-size:12px; color:#aaa79b; }
+@media (max-width:1000px){ .nv-top,.nv-menu { gap:30px; } }
+@media (max-width:700px){ .nv-top,.nv-menu { grid-template-columns:1fr; } .nv-menu { margin-top:36px; } .nv-category h3 { font-size:32px; } }
+.nv-line { display:flex; justify-content:space-between; gap:18px; padding:15px 0; font-size:15px; line-height:1.4; border-bottom:1px solid #ffffff30; }
+.nv-line strong { white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:600; color:var(--yellow); }
+header nav a { white-space:nowrap; }
+@media (max-width:1180px){ header nav a:nth-child(4),header nav a:nth-child(5) { display:none; } }
+
+/* Puneri art direction */
+.paithani { height:34px; background:#7b1e2e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='34'%3E%3Crect width='56' height='34' fill='%237b1e2e'/%3E%3Crect y='2' width='56' height='3' fill='%23ffd521'/%3E%3Crect y='7' width='56' height='3' fill='%231f7a5a'/%3E%3Cpath d='M14 14l7 8-7 8-7-8zM42 14l7 8-7 8-7-8z' fill='%23ffd521'/%3E%3Cpath d='M14 18l3 4-3 4-3-4zM42 18l3 4-3 4-3-4z' fill='%237b1e2e'/%3E%3Cpath d='M0 33a14 14 0 0 1 28 0a14 14 0 0 1 28 0' fill='none' stroke='%23ffd521' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x; }
+.maha { position:relative; background:var(--yellow); padding:0 0 60px; }
+.maha > :not(.paithani) { margin-left:max(28px,calc((100vw - 1160px)/2)); margin-right:max(28px,calc((100vw - 1160px)/2)); }
+.maha .paithani { margin:0; }
+.maha .paithani:last-child { margin-top:60px; }
+.maha-top { display:grid; grid-template-columns:1fr 1.05fr; gap:5%; align-items:center; padding-top:70px; }
+.maha-head .eyebrow { margin-bottom:16px; }
+.maha-head h2 { margin:6px 0 22px; font-size:clamp(38px,5vw,66px); }
+.maha-head p:last-child { max-width:470px; }
+.deva.big { font-size:clamp(46px,7vw,92px); line-height:1.12; color:var(--black); }
+.maha-art { position:relative; aspect-ratio:1/.92; max-width:560px; width:100%; justify-self:center; }
+.disc { position:absolute; inset:2% 6% 12% 6%; border-radius:50%; background:var(--cream); border:2px solid var(--black); box-shadow:10px 10px 0 var(--black); }
+.disc::after { content:""; position:absolute; inset:14px; border-radius:50%; border:1.5px dashed var(--black); opacity:.5; }
+.fort { position:absolute; left:2%; right:2%; bottom:4%; width:96%; height:auto; filter:drop-shadow(0 3px 0 rgba(0,0,0,.15)); }
+.pheta { position:absolute; width:30%; left:-3%; top:2%; transform:rotate(-12deg); filter:drop-shadow(5px 6px 0 rgba(0,0,0,.85)); }
+.stamp { position:absolute; width:27%; right:-2%; top:4%; opacity:.88; transform:rotate(14deg); mix-blend-mode:multiply; }
+.stamp text { font-family:var(--display); }
+.stamp .stamp-deva { font-family:var(--deva); }
+.corners { margin-top:56px; padding:0; list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.corner { position:relative; display:flex; flex-direction:column; gap:3px; padding:22px 22px 20px; background:var(--cream); border:2px solid var(--black); box-shadow:5px 5px 0 var(--black); }
+.corner:nth-child(even) { transform:rotate(.6deg); } .corner:nth-child(odd) { transform:rotate(-.5deg); }
+.corner.home { background:var(--black); color:var(--cream); }
+.corner.home .cd { color:var(--yellow); }
+.cn { font:700 12px var(--display); letter-spacing:1px; opacity:.6; }
+.corner b { font:400 30px/1.1 var(--serif); letter-spacing:-.8px; }
+.corner em { font-size:15px; color:var(--yellow); }
+.cd { font-size:14px; }
+.corner .vmark { position:absolute; right:18px; top:20px; margin:0; background:#fff; }
+.maha-photos { grid-column:auto; margin-top:44px; max-width:760px; }
+.maha-photos figure:nth-child(1) { transform:rotate(-1.4deg); } .maha-photos figure:nth-child(2) { transform:rotate(1.2deg); }
+.maha-photos figure { background:var(--cream); padding:10px 10px 4px; border:2px solid var(--black); box-shadow:5px 5px 0 var(--black); }
+.maha .image-note { color:#3a3930; }
+footer { border-top:0; }
+body::after { content:""; position:fixed; inset:0; pointer-events:none; z-index:150; opacity:.07; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E"); }
+@media (max-width:1000px){ .maha-top { gap:24px; } .corners { grid-template-columns:1fr 1fr; } }
+@media (max-width:700px){ .maha-top { grid-template-columns:1fr; padding-top:50px; } .maha-art { max-width:420px; } .corners { grid-template-columns:1fr; } .corner,.corner:nth-child(n) { transform:none; } .maha-photos { grid-template-columns:1fr 1fr; } .maha-photos img { height:150px; } .pheta { left:0; } .stamp { right:0; } }
+@media (prefers-reduced-motion:reduce){ body::after { display:none; } }
+
+/* Puneri look across the page */
+.paithani.thin { height:22px; background-size:auto 22px; border-block:1px solid var(--black); }
+.deva.sub { font-size:26px; color:#8a2a1c; margin-bottom:4px; }
+.ink { position:absolute; width:118px; height:118px; pointer-events:none; opacity:.9; mix-blend-mode:multiply; z-index:2; }
+.ink text { font-family:var(--display); } .ink .ink-deva { font-family:var(--deva); }
+.hero-ink { right:62px; top:18px; transform:rotate(12deg); }
+.hero-art .hero-ink { mix-blend-mode:normal; opacity:.95; background:rgba(255,213,33,.0); }
+.full-menu,.nv-sec { position:relative; }
+.sec-ink { right:max(28px,calc((100vw - 1160px)/2)); top:34px; transform:rotate(-10deg); }
+.nv-ink { mix-blend-mode:normal; }
+.foot-sign { display:flex; align-items:center; gap:24px; padding:6px 0 24px; }
+.foot-sign .deva { font-size:clamp(26px,3.2vw,40px); color:var(--yellow); }
+.foot-ink { position:static; width:96px; height:96px; mix-blend-mode:normal; transform:rotate(-8deg); flex:none; }
+footer { position:relative; }
+footer::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.5; background:radial-gradient(circle at 15% 20%,rgba(255,213,33,.07),transparent 40%); }
+@media (max-width:700px){ .hero-ink { right:12px; top:8px; width:88px; height:88px; } .sec-ink { width:84px; height:84px; top:14px; right:14px; } .deva.sub { font-size:22px; } .foot-sign { flex-wrap:wrap; } }
