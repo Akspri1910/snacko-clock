@@ -53,3 +53,7 @@ The checked-in `dist/` is already runnable: no application server, database, env
 - The website is public for friend/customer review. Pushing to this GitHub repository does not automatically update the existing Sites deployment.
 
 See [CLAUDE.md](CLAUDE.md) for the full handoff and prioritized future scope.
+
+## Menu and logo update — 25 October 2026
+
+The owner supplied D:\Snacko Clock\photos. The full board menu is now in dist/index.html at #full-menu: 60 entries across 11 categories, including add-ons, with prices transcribed from the board and a link to its original photograph. See MENU_SOURCE.md. The header, footer, Instagram card and favicon now use assets/original-sign-logo.png, the exact supplied crop of the real sign photograph, with its existing background retained. It is not a vector or transparent original artwork. This supersedes the earlier missing-file and temporary-logo status above. Six AI food previews remain explicitly disclosed because no actual dish photography was supplied. Day/night stall photos remain in the story. Opening hours are intentionally unlisted at the owner’s request. The board birthday offer was not added.

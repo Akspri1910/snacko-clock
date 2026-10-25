@@ -48,3 +48,10 @@ const schema=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]
 assert.equal(schema['@type'],'Restaurant');
 assert.equal(schema.openingHours,undefined);
 console.log('Passed: visible content without scroll triggers, single local stylesheet and SEO metadata');
+
+assert.equal([...html.matchAll(/class="menu-line"/g)].length,60);
+assert.equal([...html.matchAll(/class="menu-category"/g)].length,11);
+assert.ok(html.includes("assets/original-sign-logo.png")&&!html.includes("assets/brand-logo.png"));
+assert.ok(html.includes("<span>Pani Puri</span><strong>₹40</strong>")&&html.includes("<span>Cold Coffee</span><strong>₹90</strong>"));
+assert.ok(!html.includes("openingHours"));
+console.log("Passed: full board menu, original sign photo logo, and no unconfirmed hours");

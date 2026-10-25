@@ -264,3 +264,19 @@ footer small { color: #b8b5a7; }
   .motion-ready .ticker-track { animation: none; }
   .button:hover, .food-grid article:hover .food-image img { transform: none; }
 }
+
+/* Board menu stays visible without JavaScript or motion. */
+.full-menu { background: var(--black); color: var(--ivory); }
+.full-menu h2 { font-family: 'Anton', Impact, sans-serif; font-size: clamp(48px,7vw,86px); line-height: .98; margin: 16px 0 24px; }
+.full-menu h2 i { color: var(--yellow); font-style: normal; }
+.menu-intro, .menu-board-note { max-width: 680px; font-size: 16px; line-height: 1.6; }
+.menu-categories { columns: 3 290px; column-gap: 32px; margin: 36px 0; }
+.menu-category { break-inside: avoid; margin-bottom: 28px; padding: 22px; border: 1px solid #ffffff30; border-radius: 8px; background: var(--charcoal); }
+.menu-category h3 { font-size: 25px; color: var(--yellow); margin: 0 0 14px; }
+.menu-category ul { list-style: none; padding: 0; margin: 0; }
+.menu-line { display: flex; justify-content: space-between; gap: 16px; font-size: 16px; line-height: 1.45; padding: 9px 0; border-bottom: 1px solid #ffffff18; }
+.menu-line:last-child { border: 0; }
+.menu-line strong { white-space: nowrap; color: var(--butter); font-variant-numeric: tabular-nums; }
+.full-menu .button { margin-top: 18px; color: var(--black); background: var(--yellow); }
+.brand-logo { object-fit: contain; border-radius: 6px; }
+@media(max-width:600px) { .menu-categories { columns: 1; } .menu-category { padding: 18px; } }
